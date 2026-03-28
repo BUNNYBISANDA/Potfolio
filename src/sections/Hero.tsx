@@ -6,14 +6,15 @@ import { smoothScrollTo } from '@/lib/scroll'
 export default function Hero() {
   const { profile } = content
   const imgSrc = content.profileImage || '/avatar.jpg'
+  const cvUrl = `${import.meta.env.BASE_URL}cv.pdf`
   return (
     <Section id="hero" className="pt-10 md:pt-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
         <div>
-          <h1 className="type-display">Hi, I'm {profile.nickname} — {profile.role}.</h1>
+          <h1 className="type-display">Hi, I'm {profile.nickname} â€” {profile.role}.</h1>
           <p className="type-body text-muted mt-4 max-w-prose">{profile.tagline}</p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href="/cv.pdf" download>
+            <a href={cvUrl} download>
               <Button>Download CV</Button>
             </a>
             <Button variant="secondary" onClick={() => smoothScrollTo('contact')}>Contact Me</Button>
