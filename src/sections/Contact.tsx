@@ -1,115 +1,63 @@
-import Section from '@/components/Section'
-import Button from '@/components/Button'
+import { Github, Linkedin, Mail } from 'lucide-react'
 import Card from '@/components/Card'
+import Section from '@/components/Section'
+import { buttonVariants } from '@/components/Button'
 import { content } from '@/data/content'
-import { Github, Linkedin, Phone, MessageSquare } from 'lucide-react'
-import { FormEvent, useState } from 'react'
 
 export default function Contact() {
-  const { profile } = content
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({})
-
-  function validate() {
-    const es: typeof errors = {}
-    if (!form.name.trim()) es.name = 'Name is required'
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) es.email = 'Valid email is required'
-    if (form.message.trim().length < 10) es.message = 'Message should be at least 10 characters'
-    setErrors(es)
-    return Object.keys(es).length === 0
-  }
-
-  async function onSubmit(e: FormEvent) {
-    e.preventDefault()
-    if (!validate()) return
-    setStatus('sending')
-    // Placeholder async (easy to wire EmailJS later)
-    try {
-      await new Promise(res => setTimeout(res, 600))
-      setStatus('success')
-      setForm({ name: '', email: '', message: '' })
-    } catch {
-      setStatus('error')
-    }
-  }
+  const { profile, contactBlurb } = content
 
   return (
-    <Section id="contact" title="Contact" subtitle="Let’s talk">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <p className="type-body text-muted max-w-prose">
-            I’m open to collaboration, coaching inquiries, and project work. The easiest way to reach me is by email or WhatsApp.
-          </p>
-          <div className="mt-4 space-y-2">
-            <a className="block hover:text-accent" href={`mailto:${profile.email}`}>{profile.email}</a>
-            <p className="type-caption">Location: {profile.location}</p>
+    <Section
+      id="contact"
+      eyebrow="Contact"
+      title="Have a website, system, or dashboard idea? Let’s build it."
+      description="Email is the fastest way to reach me for internship, freelance, or project discussions."
+    >
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+        <Card className="p-6 md:p-8">
+          <p className="max-w-3xl text-lg leading-8 text-slate-200/80">{contactBlurb}</p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href={profile.socials.email} className={buttonVariants({ variant: 'primary', size: 'lg' })}>
+              <Mail size={18} />
+              Email Me
+            </a>
+            <a href={profile.socials.github} target="_blank" rel="noreferrer" className={buttonVariants({ variant: 'secondary', size: 'lg' })}>
+              <Github size={18} />
+              GitHub
+            </a>
+            <a href={profile.socials.linkedin} target="_blank" rel="noreferrer" className={buttonVariants({ variant: 'secondary', size: 'lg' })}>
+              <Linkedin size={18} />
+              LinkedIn
+            </a>
           </div>
-          <div className="mt-5 flex gap-3">
-            {profile.socials.github && (
-              <a href={profile.socials.github} aria-label="GitHub" className="inline-flex items-center gap-2 hover:text-accent"><Github size={18}/> GitHub</a>
-            )}
-            {profile.socials.linkedin && (
-              <a href={profile.socials.linkedin} aria-label="LinkedIn" className="inline-flex items-center gap-2 hover:text-accent"><Linkedin size={18}/> LinkedIn</a>
-            )}
-            {profile.socials.whatsapp && (
-              <a href={profile.socials.whatsapp} aria-label="WhatsApp" className="inline-flex items-center gap-2 hover:text-accent"><Phone size={18}/> WhatsApp</a>
-            )}
-            {profile.socials.discord && (
-              <a href={profile.socials.discord} aria-label="Discord" className="inline-flex items-center gap-2 hover:text-accent"><MessageSquare size={18}/> Discord</a>
-            )}
-          </div>
-        </div>
-        <Card className="p-6">
-          <form noValidate onSubmit={onSubmit}>
-            <div className="grid grid-cols-1 gap-4">
-              <label className="block">
-                <span className="type-caption">Name</span>
-                <input
-                  className="mt-1 w-full rounded-xl border border-black/10 dark:border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent"
-                  value={form.name}
-                  onChange={e => setForm({ ...form, name: e.target.value })}
-                  aria-invalid={!!errors.name}
-                  aria-describedby={errors.name ? 'name-error' : undefined}
-                />
-                {errors.name && <span id="name-error" className="text-red-500 text-sm">{errors.name}</span>}
-              </label>
-              <label className="block">
-                <span className="type-caption">Email</span>
-                <input
-                  type="email"
-                  className="mt-1 w-full rounded-xl border border-black/10 dark:border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent"
-                  value={form.email}
-                  onChange={e => setForm({ ...form, email: e.target.value })}
-                  aria-invalid={!!errors.email}
-                  aria-describedby={errors.email ? 'email-error' : undefined}
-                />
-                {errors.email && <span id="email-error" className="text-red-500 text-sm">{errors.email}</span>}
-              </label>
-              <label className="block">
-                <span className="type-caption">Message</span>
-                <textarea
-                  rows={5}
-                  className="mt-1 w-full rounded-xl border border-black/10 dark:border-white/10 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent"
-                  value={form.message}
-                  onChange={e => setForm({ ...form, message: e.target.value })}
-                  aria-invalid={!!errors.message}
-                  aria-describedby={errors.message ? 'message-error' : undefined}
-                />
-                {errors.message && <span id="message-error" className="text-red-500 text-sm">{errors.message}</span>}
-              </label>
-              <div className="flex items-center gap-3">
-                <Button type="submit" disabled={status==='sending'}>
-                  {status === 'sending' ? 'Sending…' : 'Send Message'}
-                </Button>
-                {status === 'success' && <span className="text-green-600">Sent! I will reply soon.</span>}
-                {status === 'error' && <span className="text-red-600">Something went wrong. Try again.</span>}
-              </div>
+        </Card>
+
+        <Card className="p-6 md:p-8">
+          <p className="section-eyebrow">Availability</p>
+          <h3 className="mt-4 font-display text-3xl font-semibold text-white">{profile.status}</h3>
+
+          <div className="mt-8 grid gap-4">
+            <div className="rounded-[1.2rem] border border-white/8 bg-white/[0.03] p-4">
+              <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Email</p>
+              <a href={profile.socials.email} className="mt-2 block text-base font-medium text-white hover:text-cyan-100">
+                {profile.email}
+              </a>
             </div>
-          </form>
+
+            <div className="rounded-[1.2rem] border border-white/8 bg-white/[0.03] p-4">
+              <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Location</p>
+              <p className="mt-2 text-base font-medium text-white">{profile.location}</p>
+            </div>
+
+            <div className="rounded-[1.2rem] border border-white/8 bg-white/[0.03] p-4">
+              <p className="text-xs uppercase tracking-[0.18em] text-slate-400">Primary direction</p>
+              <p className="mt-2 text-base font-medium text-white">Web development, backend systems, and dashboard-focused work</p>
+            </div>
+          </div>
         </Card>
       </div>
     </Section>
   )
 }
-

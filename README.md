@@ -1,57 +1,49 @@
-# Bunny — Portfolio (React + Vite + Tailwind)
+# Bisanda Jayathilaka - Developer Portfolio
 
-Elegant, fast, and accessible portfolio for Bisanda Jayathilaka ("Bunny") highlighting dual roles: IT Student and Badminton Coach.
+Modern single-page portfolio for Bisanda Jayathilaka, positioned for internship and early-career roles in cloud, DevOps, backend, and full-stack development.
 
 ## Tech Stack
-- React 18 + Vite + TypeScript
-- Tailwind CSS (darkMode: class)
-- framer-motion (reduced motion respected)
-- lucide-react icons
 
-## Install & Run
+- React 18
+- Vite
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+
+## Highlights
+
+- Dark, premium recruiter-focused visual design
+- Clear single-page story: hero, about, skills, featured projects, journey, certifications, contact
+- Case-study project cards with problem, solution, stack, features, and proof-oriented notes
+- Responsive layout for mobile, tablet, and desktop
+- SEO metadata, Open Graph tags, and JSON-LD person schema
+- GitHub Pages-safe static build
+
+## Install and Run
 
 ```bash
-npm i
+npm ci
 npm run dev
+```
+
+## Production Build
+
+```bash
 npm run build
 npm run preview
 ```
 
-## Features
-- Minimal, premium design with great spacing and typography
-- Dark/Light theme with persistence (`localStorage`)
-- WCAG AA contrast, keyboard navigation, skip link
-- Smooth in-page scrolling and active section highlighting
-- Lazy-loaded images and responsive layout
-- SEO meta, Open Graph tags, and JSON-LD Person schema
+## Editing Content
 
-## Deploy
+Most text, links, project case studies, skills, and certifications live in `src/data/content.ts`.
 
-### GitHub Pages
-1. Add a repository and push the project.
-2. Install `gh-pages` locally if you prefer CLI deploys (optional):
-   ```bash
-   npm i -D gh-pages
-   ```
-3. Build and push `dist` contents to `gh-pages` branch:
-   ```bash
-   npm run build
-   npx gh-pages -d dist
-   ```
-4. In GitHub repo settings, enable Pages for the `gh-pages` branch.
+## Deployment
 
-Alternatively, set up a GitHub Action that runs `npm ci && npm run build` and publishes `dist/`.
+The project keeps the Vite static build flow, so GitHub Pages deployment remains straightforward:
 
-### XAMPP
-1. Run `npm run build` to create the `dist/` folder.
-2. Copy `dist/` to `C:/xampp/htdocs/portfolio` (e.g., `htdocs/portfolio`).
-3. Because the site uses hash-less in-page scrolling (no client routing), it works out-of-the-box. If you add client-side routes later, configure a 404 rewrite to `index.html`.
+```bash
+npm run build
+```
 
-## Customize
-- All editable text and links live in `src/data/content.ts`.
-- Update social links, WhatsApp/Discord URLs, and project repos there.
-- Replace images in `src/assets/` and `public/`.
-
-## Notes
-- CV is at `public/cv.pdf` (replace with your file as needed).
-- Replace `public/og-cover.jpg` with a real banner (1200x630).
+Publish the generated `dist/` output with your existing GitHub Pages workflow or branch setup.

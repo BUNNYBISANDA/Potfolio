@@ -1,60 +1,70 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bisanda Jayathilaka (Bunny) - IT Student & Badminton Coach</title>
-    <meta name="description" content="Bunny is an IT student and badminton coach building useful software and coaching athletes. Portfolio, projects, coaching plans, and contact." />
+    <title>Bisanda Jayathilaka | Web Developer, Backend Developer & Data Analysis Enthusiast</title>
+    <meta
+      name="description"
+      content="Portfolio of Bisanda Jayathilaka – Web Developer, Backend Developer, and Data Analysis Enthusiast."
+    />
+    <meta
+      name="keywords"
+      content="Bisanda Jayathilaka, web developer portfolio, backend developer portfolio, data analysis portfolio, internship portfolio"
+    />
+    <meta name="author" content="Bisanda Jayathilaka" />
+    <meta name="theme-color" content="#050816" />
+    <link rel="canonical" href="https://bunnybisanda.github.io/Potfolio/" />
     <link rel="icon" href="%BASE_URL%favicon.svg" type="image/svg+xml" />
 
-    <!-- Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Bisanda Jayathilaka (Bunny) - IT Student & Badminton Coach" />
-    <meta property="og:description" content="Bunny is an IT student and badminton coach. Explore projects and coaching plans." />
-    <meta property="og:image" content="%BASE_URL%og-cover.jpg" />
-    <meta property="og:url" content="%BASE_URL%" />
+    <meta property="og:title" content="Bisanda Jayathilaka | Web Developer, Backend Developer & Data Analysis Enthusiast" />
+    <meta
+      property="og:description"
+      content="Portfolio of Bisanda Jayathilaka – Web Developer, Backend Developer, and Data Analysis Enthusiast."
+    />
+    <meta property="og:image" content="https://bunnybisanda.github.io/Potfolio/og-cover.jpg" />
+    <meta property="og:url" content="https://bunnybisanda.github.io/Potfolio/" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bisanda Jayathilaka | Web Developer, Backend Developer & Data Analysis Enthusiast" />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Bisanda Jayathilaka – Web Developer, Backend Developer, and Data Analysis Enthusiast."
+    />
+    <meta name="twitter:image" content="https://bunnybisanda.github.io/Potfolio/og-cover.jpg" />
 
-    <!-- Theme color -->
-    <meta name="theme-color" content="#0B0F1A" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
-
-    <script>
-      // Respect saved theme before paint
-      (() => {
-        try {
-          const stored = localStorage.getItem('theme');
-          const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          if (stored === 'dark' || (!stored && preferDark)) {
-            document.documentElement.classList.add('dark');
-          } else {
-            document.documentElement.classList.remove('dark');
-          }
-        } catch {}
-      })();
-    </script>
-
-    <!-- JSON-LD Person Schema -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Bisanda Jayathilaka",
-        "alternateName": "Bunny",
-        "jobTitle": "IT Student & Badminton Coach",
-        "email": "mailto:hello@example.com",
+        "jobTitle": "Web Developer | Backend Developer | Data Analysis Enthusiast",
+        "url": "https://bunnybisanda.github.io/Potfolio/",
+        "email": "mailto:bunnybisanda05@gmail.com",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Bangkok"
+          "addressLocality": "Bangkok",
+          "addressCountry": "Thailand"
         },
         "sameAs": [
-          "https://github.com/placeholder",
-          "https://www.linkedin.com/in/placeholder"
+          "https://github.com/BUNNYBISANDA",
+          "https://www.linkedin.com/in/bisanda-jayathilaka-373635311/",
+          "https://bunnybisanda.github.io/Potfolio/"
+        ],
+        "knowsAbout": [
+          "Cloud computing",
+          "Data analysis",
+          "Backend development",
+          "Python automation",
+          "Frontend development",
+          "Power BI"
         ]
       }
     </script>
@@ -63,4 +73,4 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
-  </html>
+</html>

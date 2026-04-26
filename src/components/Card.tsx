@@ -1,6 +1,5 @@
-import { ComponentProps } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 
-export default function Card({ className = '', ...props }: ComponentProps<'div'>) {
-  return <div className={'card ' + className} {...props} />
+export default function Card({ className = '', ...props }: ComponentPropsWithoutRef<'div'>) {
+  return <div className={['surface', 'min-w-0', className].filter(Boolean).join(' ')} {...props} />
 }
-

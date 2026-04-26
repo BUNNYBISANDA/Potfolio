@@ -2,30 +2,49 @@ import { HTMLAttributes, PropsWithChildren } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 
 type Props = PropsWithChildren<{
+  id: string
+  eyebrow?: string
   title?: string
-  id?: string
-  subtitle?: string
-}> & HTMLAttributes<HTMLDivElement>
+  description?: string
+  contentClassName?: string
+}> &
+  HTMLAttributes<HTMLElement>
 
-export default function Section({ title, subtitle, className = '', children, ...rest }: Props) {
-  const prefersReduced = useReducedMotion()
+export default function Section({
+  id,
+  eyebrow,
+  title,
+  description,
+  className = '',
+  contentClassName = '',
+  children,
+  ...props
+}: Props) {
+  const prefersReducedMotion = useReducedMotion()
+
   return (
-    <div className={"py-14 md:py-20 " + className} {...rest}>
-      {(title || subtitle) && (
-        <div className="mb-8 md:mb-10">
-          {subtitle && <p className="type-caption uppercase tracking-wide">{subtitle}</p>}
-          {title && <h2 className="type-h2 mt-1" id={rest.id ? `${rest.id}-title` : undefined}>{title}</h2>}
+    <section id={id} aria-labelledby={title ? `${id}-title` : undefined} className={['section-shell scroll-mt-28', className].join(' ')} {...props}>
+      {(eyebrow || title || description) && (
+        <div className="mb-10 md:mb-12">
+          {eyebrow && <p className="section-eyebrow">{eyebrow}</p>}
+          {title && (
+            <h2 id={`${id}-title`} className="section-title mt-4">
+              {title}
+            </h2>
+          )}
+          {description && <p className="section-copy mt-4">{description}</p>}
         </div>
       )}
+
       <motion.div
-        initial={prefersReduced ? false : { opacity: 0, y: 12 }}
-        whileInView={prefersReduced ? {} : { opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+        whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.22 }}
+        transition={{ duration: 0.55, ease: 'easeOut' }}
+        className={contentClassName}
       >
         {children}
       </motion.div>
-    </div>
+    </section>
   )
 }
-
