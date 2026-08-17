@@ -1,20 +1,32 @@
-import Section from '@/components/Section'
+import { motion, useReducedMotion } from 'framer-motion'
 import ProjectCard from '@/components/ProjectCard'
+import Section from '@/components/Section'
 import { content } from '@/data/content'
 
 export default function Projects() {
+  const prefersReducedMotion = useReducedMotion()
+
   return (
-    <Section
-      id="projects"
-      eyebrow="Featured Projects"
-      title="Selected projects with clearer context and stronger proof of work"
-      description="Each project highlights the problem, the solution, the tech stack, and the outcome so a recruiter can understand the work quickly."
-    >
-      <div className="grid gap-6 xl:grid-cols-2">
+    <Section id="work" eyebrow="Selected Work" title="Three projects, three different problems">
+      <motion.div
+        className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.15 }}
+        variants={{ hidden: {}, show: { transition: { staggerChildren: 0.1 } } }}
+      >
         {content.projects.map((project) => (
-          <ProjectCard key={project.title} project={project} />
+          <motion.div
+            key={project.title}
+            variants={{
+              hidden: prefersReducedMotion ? {} : { opacity: 0, y: 22 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+            }}
+          >
+            <ProjectCard project={project} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </Section>
   )
 }

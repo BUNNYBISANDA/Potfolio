@@ -4,17 +4,20 @@
 
 :root {
   color-scheme: dark;
-  --bg: #050816;
-  --surface: rgba(7, 12, 23, 0.72);
-  --surface-strong: rgba(10, 16, 30, 0.88);
-  --fg: #f8fafc;
-  --muted: #94a3b8;
-  --accent: #67e8f9;
-  --accent-2: #38bdf8;
-  --line: rgba(148, 163, 184, 0.16);
-  --line-strong: rgba(103, 232, 249, 0.22);
-  --shadow-card: 0 28px 80px rgba(2, 6, 23, 0.42);
-  --shadow-glow: 0 0 0 1px rgba(103, 232, 249, 0.12), 0 14px 40px rgba(8, 47, 73, 0.26);
+  /* Medium-tone slate-indigo base — not near-black, not pale */
+  --bg: #161b2e;
+  --bg-soft: #1c2340;
+  --surface: rgba(38, 46, 79, 0.55);
+  --surface-strong: rgba(44, 53, 92, 0.68);
+  --fg: #f4f6fb;
+  --muted: #a7b0cc;
+  --accent: #7dd3fc;
+  --accent-2: #a78bfa;
+  --accent-3: #f0abfc;
+  --line: rgba(199, 210, 254, 0.14);
+  --line-strong: rgba(167, 139, 250, 0.3);
+  --shadow-card: 0 24px 60px rgba(10, 12, 30, 0.38);
+  --shadow-glow: 0 0 0 1px rgba(167, 139, 250, 0.16), 0 18px 46px rgba(30, 20, 70, 0.32);
   --radius-lg: 1.5rem;
   --radius-xl: 2rem;
 }
@@ -33,9 +36,10 @@ html {
 body {
   @apply bg-bg font-sans text-fg antialiased;
   background:
-    radial-gradient(circle at top left, rgba(14, 165, 233, 0.16), transparent 28%),
-    radial-gradient(circle at top right, rgba(34, 211, 238, 0.10), transparent 24%),
-    linear-gradient(180deg, #050816 0%, #070b19 45%, #050713 100%);
+    radial-gradient(circle at 12% 8%, rgba(167, 139, 250, 0.22), transparent 32%),
+    radial-gradient(circle at 88% 6%, rgba(125, 211, 252, 0.16), transparent 30%),
+    radial-gradient(circle at 50% 100%, rgba(240, 171, 252, 0.10), transparent 40%),
+    linear-gradient(180deg, #171c33 0%, #191f3a 45%, #141830 100%);
   line-height: 1.65;
   overflow-x: hidden;
 }
@@ -45,16 +49,18 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: radial-gradient(circle at center, black 28%, transparent 82%);
-  opacity: 0.3;
+    linear-gradient(rgba(199, 210, 254, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(199, 210, 254, 0.055) 1px, transparent 1px);
+  background-size: 68px 68px;
+  -webkit-mask-image: radial-gradient(circle at center, black 26%, transparent 78%);
+  mask-image: radial-gradient(circle at center, black 26%, transparent 78%);
+  opacity: 0.4;
   pointer-events: none;
+  z-index: 0;
 }
 
 ::selection {
-  background: rgba(103, 232, 249, 0.22);
+  background: rgba(167, 139, 250, 0.32);
   color: var(--fg);
 }
 
@@ -66,12 +72,12 @@ img {
 a,
 button {
   transition:
-    color 180ms ease,
-    background-color 180ms ease,
-    border-color 180ms ease,
-    transform 180ms ease,
-    box-shadow 180ms ease,
-    opacity 180ms ease;
+    color 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    opacity 200ms ease;
 }
 
 :focus-visible {
@@ -86,7 +92,7 @@ button {
   z-index: 60;
   border-radius: 999px;
   border: 1px solid var(--line-strong);
-  background: rgba(8, 15, 28, 0.95);
+  background: rgba(24, 28, 52, 0.96);
   color: var(--fg);
   padding: 0.75rem 1rem;
 }
@@ -98,21 +104,24 @@ button {
 .surface {
   border-radius: var(--radius-lg);
   border: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(9, 14, 26, 0.88), rgba(7, 11, 20, 0.68));
+  background: linear-gradient(180deg, rgba(41, 48, 84, 0.6), rgba(28, 33, 60, 0.48));
   box-shadow: var(--shadow-card);
+  -webkit-backdrop-filter: blur(22px);
   backdrop-filter: blur(22px);
 }
 
 .surface-strong {
   border-radius: var(--radius-xl);
   border: 1px solid var(--line-strong);
-  background: linear-gradient(180deg, rgba(12, 19, 35, 0.96), rgba(7, 11, 21, 0.82));
+  background: linear-gradient(180deg, rgba(48, 56, 98, 0.72), rgba(30, 35, 64, 0.6));
   box-shadow: var(--shadow-glow);
-  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(26px);
+  backdrop-filter: blur(26px);
 }
 
 .section-shell {
   padding-block: clamp(4rem, 6vw, 6.5rem);
+  position: relative;
 }
 
 .section-eyebrow {
@@ -134,15 +143,127 @@ button {
 
 .section-copy {
   max-width: 44rem;
-  color: rgba(226, 232, 240, 0.74);
+  color: rgba(226, 230, 250, 0.76);
   font-size: clamp(1rem, 2vw, 1.12rem);
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #f8fafc 10%, #bae6fd 50%, #67e8f9 100%);
+  background: linear-gradient(120deg, #f4f6fb 6%, #d8b4fe 42%, #7dd3fc 78%, #a78bfa 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: gradient-flow 8s ease-in-out infinite;
+}
+
+@keyframes gradient-flow {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+  z-index: 70;
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.6);
+}
+
+/* 3D tilt utilities */
+.tilt-wrap {
+  perspective: 1200px;
+}
+
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.tilt-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.16), transparent 55%);
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.tilt-card:hover .tilt-glare {
+  opacity: 1;
+}
+
+.portrait-ring {
+  animation: spin-slow 34s linear infinite;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.portrait-ring-reverse {
+  animation: spin-slow-reverse 26s linear infinite;
+}
+
+@keyframes spin-slow-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.orbit-ring {
+  animation: spin-slow 40s linear infinite;
+  transform-origin: center;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 26s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.browser-chrome {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 12, 24, 0.28);
+}
+
+.browser-chrome span {
+  display: block;
+  height: 0.55rem;
+  width: 0.55rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
 }
 
 @media (prefers-reduced-motion: reduce) {

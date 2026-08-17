@@ -16,9 +16,9 @@ const baseStyles =
 
 const variantStyles: Record<Variant, string> = {
   primary:
-    'border-cyan-300/20 bg-cyan-300/12 text-white shadow-[0_0_0_1px_rgba(103,232,249,0.10),0_14px_30px_rgba(8,47,73,0.22)] hover:-translate-y-0.5 hover:border-cyan-300/35 hover:bg-cyan-300/18',
+    'border-violet-300/25 bg-gradient-to-r from-violet-400/25 via-fuchsia-300/15 to-cyan-300/20 text-white shadow-[0_0_0_1px_rgba(167,139,250,0.14),0_14px_30px_rgba(30,20,70,0.28)] hover:-translate-y-0.5 hover:scale-[1.02] hover:border-violet-300/40 hover:shadow-[0_0_0_1px_rgba(167,139,250,0.22),0_18px_40px_rgba(30,20,70,0.36)]',
   secondary:
-    'border-white/12 bg-white/5 text-white hover:-translate-y-0.5 hover:border-cyan-300/22 hover:bg-white/8',
+    'border-white/12 bg-white/5 text-white hover:-translate-y-0.5 hover:border-violet-300/25 hover:bg-white/8',
   ghost:
     'border-transparent bg-transparent text-slate-300 hover:text-white',
 }

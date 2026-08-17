@@ -23,6 +23,8 @@ export default {
         sans: ['Manrope', 'system-ui', 'sans-serif'],
         display: ['Space Grotesk', 'Manrope', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        serif: ['Playfair Display', 'Georgia', 'serif'],
+        script: ['Caveat', 'cursive'],
       },
     },
   },
